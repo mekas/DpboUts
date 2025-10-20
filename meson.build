@@ -25,6 +25,7 @@ add_global_arguments(cpp_args, language : 'cpp')
 
 app_sources = [
     'main.cpp',
+    'util.h'
 # Add other source files here, e.g., 'src/helper.cpp'
 ]
 

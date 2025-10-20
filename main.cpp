@@ -1,6 +1,10 @@
 #include <iostream>
+#include <string>
+#include <filesystem>
+#include "util.h"
 
 using namespace std;
+namespace fs = std::filesystem;
 
 enum PrimaryPrompt{LIST_FILE, CREATE_FILE, OPEN_FILE, EXIT};
 
@@ -22,6 +26,14 @@ int main(){
         }
         switch(mainPrompt){
             case LIST_FILE:{
+                string path = "./";
+                const string filter=".text";
+                for (const auto & entry : fs::directory_iterator(path)){
+                    const string filename = entry.path();
+                    
+                    if(filter_file(filename, filter))
+                        cout << filename << std::endl;
+                }
                 break;
             }
             case CREATE_FILE:{
