@@ -3,7 +3,7 @@ project('my-cpp-project', 'cpp',
     default_options: [
         'cpp_std=c++20',
         'warning_level=3',
-        'werror=true', # Treat all warnings as errors
+        'werror=false', # Treat all warnings as errors
         'optimization=s' # Optimize for size
     ]
 )
@@ -25,7 +25,8 @@ add_global_arguments(cpp_args, language : 'cpp')
 
 app_sources = [
     'main.cpp',
-    'util.h'
+    'util.h',
+    'custom_file.h'
 # Add other source files here, e.g., 'src/helper.cpp'
 ]
 

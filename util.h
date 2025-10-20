@@ -1,3 +1,6 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #include <string>
 #include <iostream>
 
@@ -24,4 +27,6 @@ bool filter_file(const string &name, const string &ext){
         return true;
     return false;
 }
+
+#endif
 

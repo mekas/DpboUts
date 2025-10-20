@@ -2,6 +2,8 @@
 #include <string>
 #include <filesystem>
 #include "util.h"
+#include "custom_file.h"
+#include "prompt.h"
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -30,13 +32,14 @@ int main(){
                 const string filter=".text";
                 for (const auto & entry : fs::directory_iterator(path)){
                     const string filename = entry.path();
-                    
+
                     if(filter_file(filename, filter))
                         cout << filename << std::endl;
                 }
                 break;
             }
             case CREATE_FILE:{
+                createFileSubPrompt();
                 break;
             }
             case OPEN_FILE:{
