@@ -47,24 +47,5 @@ void createFileSubPrompt(){
 }
 
 void openFileSubPrompt(){
-    cout << "Enter filename to open: ";
-    string fname;
-    cin >> fname;
-
-    ifstream file(fname);
-    string line;
-
-    if(file.is_open()){
-        int n = 0;
-        while (getline(file, line)) {
-            // Process the line
-            if(n==0){
-                cout << line << endl;
-            } else{
-                continue;
-            }
-        }
-    } else{
-        cout << "no file found" << endl;
-    }
+    
 }
