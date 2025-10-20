@@ -38,11 +38,11 @@ int main(){
                 }
                 break;
             }
-            case CREATE_FILE:{
-                createFileSubPrompt();
+            case OPEN_FILE:{
                 break;
             }
-            case OPEN_FILE:{
+            case CREATE_FILE:{
+                createFileSubPrompt();
                 break;
             }
             case EXIT:{

@@ -1,21 +1,70 @@
 #include <iostream>
+#include <fstream> 
+#include <vector>
+
 #include "custom_file.h"
 
 using namespace std;
 
 void createFileSubPrompt(){
     //bool isPrompt(true);
-    string title, content, author, filename;
+    string title, author, filename;
 
-    cout << "Name the file: " << endl;
+    cout << "Name of the file: ";
     cin >> filename;
     cout << "Enter article title: ";
     cin >> title;
 
-    cout << "Enter article content: ";
-    cin >> content;
+    cout << "Enter article content: " << endl;
+    //cin >> content;
+    string lines;
+    // Read input lines until an empty line is encountered
+    string input;
+    cin.clear();
+    std::cin.ignore(1000, '\n');
+    while (getline(cin, input)) {
+        if (input.empty()) {
+            break;
+        }
+        lines += "\n\n";
+        lines += input;
+    }
 
     cout << "Enter article author:";
-    cin >> author; 
-    CustomFile cf = CustomFile(title, content, author);
+    cin >> author;
+    CustomFile cf = CustomFile(title, lines, author);
+    ofstream file(filename);
+    if(!file){
+        cerr << "Failed to create file" << endl;
+        return;
+    }
+
+    file << cf.getTitle();
+    file << cf.getContent() << endl << endl;
+    file << cf.getAuthor();
+
+    file.close();
+}
+
+void openFileSubPrompt(){
+    cout << "Enter filename to open: ";
+    string fname;
+    cin >> fname;
+
+    ifstream file(fname);
+    string line;
+
+    if(file.is_open()){
+        int n = 0;
+        while (getline(file, line)) {
+            // Process the line
+            if(n==0){
+                cout << line << endl;
+            } else{
+                continue;
+            }
+        }
+    } else{
+        cout << "no file found" << endl;
+    }
 }
